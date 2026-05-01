@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Premium Financial Red Theme */
+    --color-brand-light: #C1121F;
+    --color-brand-primary: #7A0C0C;
+    --color-brand-dark: #540808;
+    
+    /* Mobile-first Base */
+    --bg-base: #FFFFFF;
+    --bg-surface: #FFFFFF;
+    --bg-subtle: #F9FAFB;
+    --bg-card: #FFFFFF;
+    --border-color: #E5E7EB;
+    --border-default: #E5E7EB;
+    
+    --text-primary: #0F0F0F;
+    --text-secondary: #4B5563;
+    --text-tertiary: #6B7280;
+    
+    /* Variables for compatibility with module css */
+    --primary: #7A0C0C;
+    --primary-light: #FEE2E2; /* Very light red for backgrounds */
+    --color-accent-600: #7A0C0C;
+    --color-accent-400: #A01414;
+    
+    --radius-full: 9999px;
+    --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    
+    --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    
+    /* Utility */
+    --radius-premium: 0.5rem; /* More corporate, sharper edges */
+  }
+
+  body {
+    @apply bg-[#FFFFFF] text-[#0F0F0F] antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}

@@ -1,0 +1,110 @@
+.section {
+  padding: 6rem 0;
+  background: var(--bg-base);
+}
+
+.grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 1024px) {
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  height: 100%;
+}
+
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cardTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  flex: 1;
+}
+
+.tag {
+  flex-shrink: 0;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  border: 1px solid currentColor;
+}
+
+.tag-blue   { color: var(--color-brand-600);  background: rgba(26,86,219,0.08); }
+.tag-purple { color: var(--color-accent-600); background: rgba(139,92,246,0.08); }
+.tag-green  { color: #16a34a; background: rgba(34,197,94,0.08); }
+.tag-orange { color: #ea580c; background: rgba(251,146,60,0.08); }
+.tag-teal   { color: #0d9488; background: rgba(20,184,166,0.08); }
+.tag-red    { color: #dc2626; background: rgba(239,68,68,0.08); }
+
+[data-theme="dark"] .tag-blue   { color: var(--color-brand-400); }
+[data-theme="dark"] .tag-purple { color: var(--color-accent-400); }
+[data-theme="dark"] .tag-green  { color: #4ade80; }
+[data-theme="dark"] .tag-orange { color: #fb923c; }
+[data-theme="dark"] .tag-teal   { color: #2dd4bf; }
+[data-theme="dark"] .tag-red    { color: #f87171; }
+
+.cardDesc {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  flex: 1;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.875rem;
+  border-top: 1px solid var(--border-default);
+  margin-top: auto;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.metaLabel {
+  font-size: 0.6875rem;
+  color: var(--text-tertiary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.metaValue {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.result {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: var(--primary-light);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+}

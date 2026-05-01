@@ -1,0 +1,102 @@
+.section {
+  padding: 6rem 0;
+  background: var(--bg-subtle);
+  border-top: 1px solid var(--border-default);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.grid {
+  display: grid;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 1024px) {
+  .grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: var(--radius-xl);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.avatar-blue   { background: linear-gradient(135deg, var(--color-brand-600), var(--color-brand-700)); }
+.avatar-purple { background: linear-gradient(135deg, var(--color-accent-500), var(--color-accent-600)); }
+.avatar-green  { background: linear-gradient(135deg, #16a34a, #15803d); }
+.avatar-orange { background: linear-gradient(135deg, #ea580c, #c2410c); }
+
+.iconBadge {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-md);
+  background: var(--bg-muted);
+}
+
+.icon-blue   { color: var(--color-brand-600); }
+.icon-purple { color: var(--color-accent-500); }
+.icon-green  { color: #16a34a; }
+.icon-orange { color: #ea580c; }
+
+[data-theme="dark"] .icon-blue   { color: var(--color-brand-400); }
+[data-theme="dark"] .icon-purple { color: var(--color-accent-400); }
+[data-theme="dark"] .icon-green  { color: #4ade80; }
+[data-theme="dark"] .icon-orange { color: #fb923c; }
+
+.name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.role {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  margin-top: 0.125rem;
+}
+
+.bio {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.disclaimer {
+  background: var(--primary-light);
+  border: 1px solid rgba(26,86,219,0.2);
+  border-radius: var(--radius-xl);
+  padding: 1.25rem 1.5rem;
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.disclaimer strong {
+  color: var(--primary);
+}
