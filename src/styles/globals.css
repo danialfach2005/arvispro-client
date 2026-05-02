@@ -38,20 +38,7 @@
     --radius-premium: 0.5rem; /* More corporate, sharper edges */
   }
 
-  [data-theme="dark"] {
-    --bg-base: #121212;
-    --bg-surface: #1E1E1E;
-    --bg-subtle: #2D2D2D;
-    --bg-card: #1E1E1E;
-    --border-color: #333333;
-    --border-default: #333333;
-    
-    --text-primary: #F9FAFB;
-    --text-secondary: #D1D5DB;
-    --text-tertiary: #9CA3AF;
-    
-    --primary-light: #540808; /* Darker red for backgrounds */
-  }
+
 
   body {
     background-color: var(--bg-base);

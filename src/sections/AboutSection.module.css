@@ -102,9 +102,6 @@
   color: var(--color-accent-600);
 }
 
-[data-theme="dark"] .missionTag {
-  color: var(--color-accent-400);
-}
 
 .vmText {
   font-size: 0.9375rem;

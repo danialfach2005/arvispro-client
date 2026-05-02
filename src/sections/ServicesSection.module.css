@@ -44,12 +44,6 @@
 .icon-red    { background: rgba(239,68,68,0.1); color: #dc2626; }
 .icon-teal   { background: rgba(20,184,166,0.1); color: #0d9488; }
 
-[data-theme="dark"] .icon-blue   { background: rgba(59,130,246,0.15); color: var(--color-brand-400); }
-[data-theme="dark"] .icon-purple { background: rgba(167,139,250,0.15); color: var(--color-accent-400); }
-[data-theme="dark"] .icon-green  { background: rgba(74,222,128,0.12); color: #4ade80; }
-[data-theme="dark"] .icon-orange { background: rgba(251,146,60,0.12); color: #fb923c; }
-[data-theme="dark"] .icon-red    { background: rgba(248,113,113,0.12); color: #f87171; }
-[data-theme="dark"] .icon-teal   { background: rgba(45,212,191,0.12); color: #2dd4bf; }
 
 .cardTitle {
   font-size: 1.0625rem;

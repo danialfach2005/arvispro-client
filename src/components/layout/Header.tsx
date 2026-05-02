@@ -1,7 +1,6 @@
 import { useEffect } from "react";
-import { Sun, Moon, Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
-import { toggleTheme } from "@/store/themeSlice";
 import { toggleMenu, setMenuOpen } from "@/store/uiSlice";
 import { useScrolled } from "@/hooks/useScrolled";
 import { Button } from "@/components/ui/Button";
@@ -16,7 +15,6 @@ const NAV_ITEMS = [
 
 export function Header() {
   const dispatch = useAppDispatch();
-  const { resolved } = useAppSelector((s) => s.theme);
   const { isMenuOpen, activeSection } = useAppSelector((s) => s.ui);
   const isScrolled = useScrolled();
 
@@ -70,17 +68,7 @@ export function Header() {
 
           {/* Actions */}
           <div className="flex items-center gap-4">
-            <button
-              className="p-2 text-gray-600 hover:text-gray-900 transition-colors rounded-full hover:bg-gray-100"
-              onClick={() => dispatch(toggleTheme())}
-              aria-label={`Switch to ${resolved === "dark" ? "light" : "dark"} mode`}
-            >
-              {resolved === "dark" ? (
-                <Sun size={18} strokeWidth={2} />
-              ) : (
-                <Moon size={18} strokeWidth={2} />
-              )}
-            </button>
+
             <div className="hidden sm:block">
               <Button href="#contact" variant="primary" size="sm" className="bg-[#7A0C0C] text-white px-4 py-2 rounded-xl text-sm hover:bg-[#6A0A0A] transition">
                 <Phone size={14} className="mr-2 inline" />

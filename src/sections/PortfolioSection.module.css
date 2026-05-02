@@ -57,12 +57,6 @@
 .tag-teal   { color: #0d9488; background: rgba(20,184,166,0.08); }
 .tag-red    { color: #dc2626; background: rgba(239,68,68,0.08); }
 
-[data-theme="dark"] .tag-blue   { color: var(--color-brand-400); }
-[data-theme="dark"] .tag-purple { color: var(--color-accent-400); }
-[data-theme="dark"] .tag-green  { color: #4ade80; }
-[data-theme="dark"] .tag-orange { color: #fb923c; }
-[data-theme="dark"] .tag-teal   { color: #2dd4bf; }
-[data-theme="dark"] .tag-red    { color: #f87171; }
 
 .cardDesc {
   font-size: 0.9375rem;

@@ -11,11 +11,7 @@ const TeamSection = React.lazy(() => import("@/sections/TeamSection").then(m => 
 const ContactSection = React.lazy(() => import("@/sections/ContactSection").then(m => ({ default: m.ContactSection })));
 
 function App() {
-  const { resolved } = useAppSelector((s) => s.theme);
 
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", resolved);
-  }, [resolved]);
 
   return (
     <div className="min-h-screen font-sans pb-[76px] lg:pb-0 flex flex-col overflow-x-hidden">

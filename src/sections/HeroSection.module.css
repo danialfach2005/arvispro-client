@@ -19,12 +19,7 @@
   pointer-events: none;
 }
 
-[data-theme="dark"] .bgGlow {
-  background:
-    radial-gradient(ellipse 90% 70% at 50% -10%, rgba(59,130,246,0.2) 0%, transparent 65%),
-    radial-gradient(ellipse 50% 40% at 85% 40%, rgba(139,92,246,0.14) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 30% at 5% 60%, rgba(26,86,219,0.1) 0%, transparent 60%);
-}
+
 
 .gridOverlay {
   position: absolute;
