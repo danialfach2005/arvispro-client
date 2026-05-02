@@ -29,7 +29,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative w-full min-h-screen flex items-center bg-[#FAFAFA] py-24 overflow-hidden"
+      className="relative w-full min-h-screen flex items-center bg-[var(--bg-base)] pt-32 pb-24 overflow-hidden"
       aria-label="Home – PT Arvispro Sinergi Indonesia"
     >
       {/* Abstract Background Element for Corporate Vibe */}

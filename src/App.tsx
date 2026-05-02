@@ -1,6 +1,7 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { Header } from "@/components/layout/Header";
 import { BottomNav } from "@/components/layout/BottomNav";
+import { useAppSelector } from "@/hooks/useRedux";
 
 const HeroSection = React.lazy(() => import("@/sections/HeroSection").then(m => ({ default: m.HeroSection })));
 const AboutSection = React.lazy(() => import("@/sections/AboutSection").then(m => ({ default: m.AboutSection })));
@@ -10,8 +11,14 @@ const TeamSection = React.lazy(() => import("@/sections/TeamSection").then(m => 
 const ContactSection = React.lazy(() => import("@/sections/ContactSection").then(m => ({ default: m.ContactSection })));
 
 function App() {
+  const { resolved } = useAppSelector((s) => s.theme);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", resolved);
+  }, [resolved]);
+
   return (
-    <div className="bg-[#FAFAFA] min-h-screen text-[#0F0F0F] font-sans pb-[76px] lg:pb-0 flex flex-col overflow-x-hidden">
+    <div className="min-h-screen font-sans pb-[76px] lg:pb-0 flex flex-col overflow-x-hidden">
       <Header />
       <main className="flex-grow w-full">
         <Suspense fallback={

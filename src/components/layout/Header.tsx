@@ -38,19 +38,20 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100 py-3" : "bg-transparent py-5"
-      }`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100 py-3" : "bg-transparent py-5"
+        }`}
       role="banner"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2" aria-label="PT Arvispro Sinergi Indonesia – Home">
-            <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#7A0C0C] text-white font-bold text-lg" aria-hidden="true">A</span>
-            <span className="text-xl font-bold tracking-tight text-gray-900">
-              Arvispro<span className="text-[#7A0C0C]">.</span>
-            </span>
+          <a href="#" className="flex items-center transition-transform hover:scale-105" aria-label="PT Arvispro Sinergi Indonesia – Home">
+            <img
+              src="/Arvispro_Edit.svg"
+              alt="Arvispro Logo"
+              className={`h-auto object-contain drop-shadow-sm transition-all duration-300 ${isScrolled ? "w-10 md:w-14" : "w-16 md:w-20"
+                }`}
+            />
           </a>
 
           {/* Desktop Nav */}
@@ -59,9 +60,8 @@ export function Header() {
               <a
                 key={item.href}
                 href={item.href}
-                className={`text-sm font-medium transition-colors hover:text-[#7A0C0C] ${
-                  activeSection === item.href.slice(1) ? "text-[#7A0C0C]" : "text-gray-600"
-                }`}
+                className={`text-sm font-medium transition-colors hover:text-[#7A0C0C] ${activeSection === item.href.slice(1) ? "text-[#7A0C0C]" : "text-gray-600"
+                  }`}
               >
                 {item.label}
               </a>

@@ -4,31 +4,31 @@ import { Reveal } from "@/components/ui/Reveal";
 
 const TEAM = [
   {
-    initials: "SA",
-    name: "Senior Advisor",
-    role: "M&A / Corporate Finance",
-    bio: "Decades of experience in investment banking and cross-industry strategic advisory transactions.",
+    initials: "WT",
+    name: "Wahyu Tri Rahmanto",
+    role: "Founders/ Senior Advisor",
+    bio: "Former Investment Bankers in Bahana Sekuritas. He experienced as a Directors in various stated owned enterprises such as PT Sinergi Investasi Properti (BP Jamsostek Subsidiaries), PT Taspen (Persero) and PT WIKA Realty.",
     icon: TrendingUp,
   },
   {
-    initials: "EL",
-    name: "Engagement Lead",
-    role: "Fundraising Strategy",
-    bio: "Expert in investor narratives, outreach design, and due diligence readiness for growth-stage companies.",
+    initials: "RT",
+    name: "Rudolf Tulus Sirait",
+    role: "Co-founders/ Lead Partner",
+    bio: "Seasoned bankers in PT Bank BNI (Persero), Experienced board of director level in prominent private mining company such as Bomba Group. He also served as member of internal audit commite at Pelindo and Kimia Farma.",
     icon: Award,
   },
   {
-    initials: "FP",
-    name: "Finance Partner",
-    role: "FP&A / Value Creation",
-    bio: "Master of KPI systems, unit economics, and board-ready reporting that sharpens strategic decisions.",
+    initials: "FA",
+    name: "Fajar Ariwinadi",
+    role: "Co-founders/ Lead Partner",
+    bio: "Former Investment Bankers in Trimegah Sekuritas. He experienced as executive managerial level at various state-owned enterprises such as Perumnas, PT Jakarta River City (WIKA Realty subsidiaries), PT Pengelola Aset (PPA) and public listed company such as PT Urban Jakarta Propertindo Tbk.",
     icon: BarChart2,
   },
   {
-    initials: "AT",
-    name: "Analyst Team",
-    role: "Research & Modeling",
-    bio: "Deep market intelligence and financial modeling to support high-value strategic decision execution.",
+    initials: "LS",
+    name: "Liberto Siahaan",
+    role: "Partner",
+    bio: "Starting his career as an engineer, he then switched to roles related to strategy, operation, finance, data science, and analytics for Green Energy Investment. Currently, he also serves as Associate Partner for a renewable energy services firm.",
     icon: BookOpen,
   },
 ];
@@ -79,8 +79,9 @@ export function TeamSection() {
 
         <Reveal delay={0.15}>
           <div className="mt-16 text-center max-w-2xl mx-auto p-6 bg-[#7A0C0C]/5 rounded-xl border border-[#7A0C0C]/10">
+            <h3 className="text-xl font-bold text-[#7A0C0C] mb-3">Why Arvispro?</h3>
             <p className="text-gray-700">
-              <strong className="text-[#7A0C0C]">Our Commitment:</strong> Every client receives direct attention from our senior partners — not junior staff.
+              Engaged, ethical and empathetic. At Arvispro, we go beyond the standard, driven by results and dedicated to our clients.
             </p>
           </div>
         </Reveal>
