@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  frontend:
+    build: .
+    container_name: arvispro-frontend
+    ports:
+      - "3000:80"
+    restart: always
+
+  # If you have a separate backend repository, you can add it here.
+  # backend:
+  #   build: ../backend  # Adjust path to backend
+  #   container_name: arvispro-backend
+  #   ports:
+  #     - "4000:4000"
+  #   restart: always
+  #   environment:
+  #     DATABASE_URL: postgres://user:pass@db:5432/app
+
+  # db:
+  #   image: postgres:15
+  #   container_name: arvispro-db
+  #   restart: always
+  #   environment:
+  #     POSTGRES_USER: user
+  #     POSTGRES_PASSWORD: pass
+  #     POSTGRES_DB: app
+  #   volumes:
+  #     - pgdata:/var/lib/postgresql/data
+
+# volumes:
+#   pgdata:
