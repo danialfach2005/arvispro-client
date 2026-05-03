@@ -22,7 +22,7 @@ describe("Header", () => {
         <Header />
       </Provider>
     );
-    expect(screen.getByText(/Arvispro/i)).toBeInTheDocument();
+    expect(screen.getByAltText(/Arvispro Logo/i)).toBeInTheDocument();
   });
 
 
@@ -34,7 +34,7 @@ describe("Header", () => {
       </Provider>
     );
 
-    const menuButton = screen.getByRole("button", { name: /Buka menu|Tutup menu/i });
+    const menuButton = screen.getByRole("button", { name: /Open menu|Close menu/i });
     expect(store.getState().ui.isMenuOpen).toBe(false);
 
     fireEvent.click(menuButton);

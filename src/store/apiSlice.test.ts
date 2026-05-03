@@ -3,9 +3,20 @@ import { configureStore } from "@reduxjs/toolkit";
 import { apiSlice } from "./apiSlice";
 import authReducer, { setCredentials } from "./authSlice";
 
+// Mock Request to avoid undici AbortSignal conflict in JSDOM
+class MockRequest {
+  url: string;
+  headers: Headers;
+  constructor(url: string, init?: any) {
+    this.url = url;
+    this.headers = new Headers(init?.headers);
+  }
+}
+
 describe("apiSlice error handling and auth flows", () => {
   let store: any;
   const mockFetch = vi.fn();
+  const originalRequest = global.Request;
 
   beforeEach(() => {
     store = configureStore({
@@ -17,10 +28,12 @@ describe("apiSlice error handling and auth flows", () => {
         getDefaultMiddleware().concat(apiSlice.middleware),
     });
     global.fetch = mockFetch;
+    global.Request = MockRequest as any;
   });
 
   afterEach(() => {
     vi.restoreAllMocks();
+    global.Request = originalRequest;
   });
 
   it("injects authorization header when token is present", async () => {
@@ -31,37 +44,44 @@ describe("apiSlice error handling and auth flows", () => {
       })
     );
 
-    mockFetch.mockResolvedValueOnce({
-      ok: true,
-      json: () => Promise.resolve([{ id: "1", name: "Lead 1" }]),
-    });
+    mockFetch.mockResolvedValueOnce(
+      new Response(JSON.stringify([{ id: "1", name: "Lead 1" }]), {
+        status: 200,
+        headers: { "Content-Type": "application/json" }
+      })
+    );
 
     await store.dispatch(apiSlice.endpoints.getLeads.initiate(undefined));
 
     expect(mockFetch).toHaveBeenCalled();
-    const request = mockFetch.mock.calls[0][0] as Request;
-    expect(request.headers.get("authorization")).toBe("Bearer fake-token-123");
+    const requestArgs = mockFetch.mock.calls[0];
+    const requestObj = requestArgs[0] as MockRequest;
+    expect(requestObj.headers.get("authorization")).toBe("Bearer fake-token-123");
   });
 
   it("does not inject authorization header when token is absent", async () => {
-    mockFetch.mockResolvedValueOnce({
-      ok: true,
-      json: () => Promise.resolve([{ id: "1", name: "Lead 1" }]),
-    });
+    mockFetch.mockResolvedValueOnce(
+      new Response(JSON.stringify([{ id: "1", name: "Lead 1" }]), {
+        status: 200,
+        headers: { "Content-Type": "application/json" }
+      })
+    );
 
     await store.dispatch(apiSlice.endpoints.getLeads.initiate(undefined));
 
     expect(mockFetch).toHaveBeenCalled();
-    const request = mockFetch.mock.calls[0][0] as Request;
-    expect(request.headers.get("authorization")).toBeNull();
+    const requestArgs = mockFetch.mock.calls[0];
+    const requestObj = requestArgs[0] as MockRequest;
+    expect(requestObj.headers.get("authorization")).toBeNull();
   });
 
   it("handles API errors gracefully", async () => {
-    mockFetch.mockResolvedValueOnce({
-      ok: false,
-      status: 401,
-      json: () => Promise.resolve({ message: "Unauthorized" }),
-    });
+    mockFetch.mockResolvedValueOnce(
+      new Response(JSON.stringify({ message: "Unauthorized" }), {
+        status: 401,
+        headers: { "Content-Type": "application/json" }
+      })
+    );
 
     const result = await store.dispatch(apiSlice.endpoints.getLeads.initiate(undefined));
 
