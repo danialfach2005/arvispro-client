@@ -1,1 +1,0 @@
-import{j as n}from"./motion-DmbWspg6.js";const t="_card_hfn2f_1",c="_hoverable_hfn2f_9",f="_glass_hfn2f_22",s={card:t,hoverable:c,glass:f};function h({children:a,className:e="",hoverable:r=!0,glass:o=!1,...l}){return n.jsx("div",{className:[s.card,r?s.hoverable:"",o?s.glass:"",e].filter(Boolean).join(" "),...l,children:a})}export{h as C};
