@@ -37,7 +37,7 @@ jobs:
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}x`
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }} # Biasanya 22
           script: |
             # Pastikan path ini sesuai dengan lokasi clone repository di VPS Anda

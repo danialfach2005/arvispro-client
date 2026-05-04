@@ -46,7 +46,7 @@ export class GraphQLClient {
   }
 }
 
+import { ENV } from "../../config/env";
+
 // Singleton instance for the application
-export const graphQLClient = new GraphQLClient(
-  import.meta.env.VITE_GRAPHQL_ENDPOINT || "https://api.arvispro.com/graphql"
-);
+export const graphQLClient = new GraphQLClient(ENV.apiUrl);
