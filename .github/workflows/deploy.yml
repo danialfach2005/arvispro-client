@@ -1,4 +1,4 @@
-name: Deploy to VPS
+name: CI/CD Pipeline
 
 on:
   push:
@@ -6,55 +6,58 @@ on:
       - main
 
 jobs:
-  deploy:
-    name: Build & Deploy
+  build:
+    name: Build and Verify
     runs-on: ubuntu-latest
-
     steps:
-      - name: 🚚 Checkout Repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: 🥟 Setup Bun
+      - name: Setup Bun
         uses: oven-sh/setup-bun@v1
         with:
           bun-version: latest
 
-      - name: 📦 Install Dependencies
+      - name: Install Dependencies
         run: bun install
 
-      - name: 🔨 Build Project
-        run: bun run build
-        env:
-          VITE_API_URL: ${{ secrets.VITE_API_URL }}
+      # - name: Run Tests
+      #   run: bun test
 
-      - name: 🚀 Deploy to VPS (Docker)
+      - name: Build Project
+        run: bun run build
+
+  deploy:
+    name: Deploy to VPS (Docker)
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execute Remote SSH Commands
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 22
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}x`
+          port: ${{ secrets.SSH_PORT }} # Biasanya 22
           script: |
-            # Masuk ke direktori project
-            cd /opt/arvispro-client || git clone https://github.com/danialfach2005/arvispro-client.git /opt/arvispro-client && cd /opt/arvispro-client
+            # Pastikan path ini sesuai dengan lokasi clone repository di VPS Anda
+            cd /path/to/arvispro-client
             
-            # Pull repository terbaru
-            git fetch origin main
-            git reset --hard origin/main
+            # Ambil update terbaru dari branch main
+            git checkout main
+            git pull origin main
             
-            # Buat file .env dari GitHub Secrets (khusus environment variables)
-            echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" > .env
-            
-            # Rebuild dan jalankan Docker Container
+            # Rebuild image Docker & restart container (Idempotent & Zero-Downtime update dengan Docker Compose)
             docker compose up -d --build
-            
-            # Prune (Bersihkan) image docker yang tidak terpakai agar disk VPS tidak penuh
-            docker image prune -f
 
-      - name: ❌ Send Notification on Failure
-        if: failure()
-        uses: rjstone/discord-webhook-notify@v1
-        with:
-          severity: error
-          details: "Deployment Arvispro Client ke VPS Gagal!"
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
+  notify-on-failure:
+    name: Notification on Failure
+    needs: [build, deploy]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Notification
+        run: |
+          echo "🚨 Deployment pipeline failed for Arvispro Client!"
+          # Uncomment baris di bawah dan masukkan Webhook URL untuk mengirim notifikasi ke Discord/Slack
+          # curl -H "Content-Type: application/json" -d '{"content": "🚨 [URGENT] Deploy Arvispro-client GAGAL. Cek GitHub Actions!"}' ${{ secrets.DISCORD_WEBHOOK }}
